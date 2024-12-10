@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'otg.css' %}">
+</head>
+<body>
+    <header>
+     <h1>My simple Blog</h1>
+     <p>Sharing my thoughts with the world!</p>
+    </header>
+    <div class="posts">
+        {% for blog in blogs%}
+        <div class="post">
+            <h2 class="post-title">{{blog.title}}</h2>
+            <p class="post-date">Published On October 1, 2024</p>
+            <div class="post-content">
+                <p>The web development landscape is constantly evolving. New technologies are emerging, framework are getting better, and it's an exciting time to be a development!</p>
+                <img src="{{blog.image.url}}" alt="">
+            </div>
+
+            <section class="comments">
+                <h3>Comments</h3>
+                <ul class="comment-list">
+                    <li class="comment-item">
+                        <strong>John:</strong> Great post! I agree with your thoughts on JavaScript's Future.
+                    </li>
+                </ul>
+
+                <div class="comment-form">
+                    <input type="text"  id="comment-input" placeholder="Add a comment.....">
+                    <button onclick="addComment()">Post</button>
+                </div>
+            </section>
+        </div>
+        {% endfor %}
+    </div>
+    <footer>
+        <p>&copy; 2024 Simple Blog</p>
+    </footer>
+    
+</body>
+</html>
